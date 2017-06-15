@@ -7,6 +7,8 @@ import org.gradle.api.provider.Provider;
 import org.gradle.api.tasks.*;
 import org.gradle.process.ExecSpec;
 
+import java.io.File;
+
 /**
  * A task type for executing Node commands.
  */
@@ -52,6 +54,12 @@ public class NodeExec extends SourceTask {
     @Override
     public FileTree getSource() {
         return super.getSource();
+    }
+
+    @InputFile
+    @PathSensitive(PathSensitivity.RELATIVE)
+    public File getPackageLockFile() {
+        return getProject().file("package-lock.json");
     }
 
     @TaskAction

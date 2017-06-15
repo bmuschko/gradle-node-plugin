@@ -1,13 +1,15 @@
 package org.gradle.plugins.node;
 
-import org.gradle.plugins.node.base.NodeBasePlugin;
-import org.gradle.plugins.node.base.tasks.NodeExec;
-import org.gradle.plugins.node.webpack.tasks.WebpackExec;
 import org.gradle.api.Action;
 import org.gradle.api.NamedDomainObjectContainer;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
+import org.gradle.plugins.node.base.NodeBasePlugin;
+import org.gradle.plugins.node.base.tasks.NodeExec;
+import org.gradle.plugins.node.typescript.NodeTypeScriptPlugin;
+import org.gradle.plugins.node.typescript.tasks.TypeScriptExec;
 import org.gradle.plugins.node.webpack.NodeWebpackPlugin;
+import org.gradle.plugins.node.webpack.tasks.WebpackExec;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -21,6 +23,7 @@ public class NodePlugin implements Plugin<Project> {
     static {
         Map<String, NodeToolPluginImplementation> tools = new HashMap<String, NodeToolPluginImplementation>();
         tools.put("webpack", new NodeToolPluginImplementation(NodeWebpackPlugin.class, WebpackExec.class));
+        tools.put("typescript", new NodeToolPluginImplementation(NodeTypeScriptPlugin.class, TypeScriptExec.class));
         REGISTERED_TOOLS = Collections.unmodifiableMap(tools);
     }
 
@@ -36,7 +39,7 @@ public class NodePlugin implements Plugin<Project> {
             public void execute(Project project) {
                 for (final NodeToolContainer tool : extension.getTools()) {
                     if (!REGISTERED_TOOLS.containsKey(tool.getName())) {
-                        throw new IllegalArgumentException("Unsupported tool " + tool.getName());
+                        throw new IllegalArgumentException("Unsupported tool '" + tool.getName() + "'");
                     }
 
                     NodeToolPluginImplementation nodeToolPluginImplementation = REGISTERED_TOOLS.get(tool.getName());

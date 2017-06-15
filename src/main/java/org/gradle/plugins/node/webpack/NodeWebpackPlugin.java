@@ -1,10 +1,11 @@
 package org.gradle.plugins.node.webpack;
 
-import org.gradle.plugins.node.base.NodeBasePlugin;
-import org.gradle.plugins.node.webpack.tasks.WebpackExec;
 import org.gradle.api.Action;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
+import org.gradle.plugins.node.base.NodeBasePlugin;
+import org.gradle.plugins.node.base.tasks.NodeExec;
+import org.gradle.plugins.node.webpack.tasks.WebpackExec;
 
 import java.io.File;
 
@@ -17,12 +18,12 @@ public class NodeWebpackPlugin implements Plugin<Project> {
     public void apply(final Project project) {
         project.getPlugins().apply(NodeBasePlugin.class);
 
-        project.getTasks().withType(WebpackExec.class, new Action<WebpackExec>() {
+        project.getTasks().withType(WebpackExec.class, new Action<NodeExec>() {
             @Override
-            public void execute(WebpackExec webpackExec) {
-                webpackExec.setDescription("Bundles web assets with Webpack.");
-                webpackExec.setExecutable(new File(project.getProjectDir(), "node_modules/.bin/webpack").getAbsolutePath());
-                webpackExec.setSource(new String[] { "app", "index.html" });
+            public void execute(NodeExec nodeExec) {
+                nodeExec.setDescription("Bundles web assets with Webpack.");
+                nodeExec.setExecutable(new File(project.getProjectDir(), "node_modules/.bin/webpack").getAbsolutePath());
+                nodeExec.setSource(new String[] { "app", "index.html" });
             }
         });
     }
