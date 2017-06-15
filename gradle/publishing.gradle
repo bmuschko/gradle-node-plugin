@@ -1,0 +1,29 @@
+apply plugin: "maven-publish"
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+
+            pom.withXml {
+                def root = asNode()
+                root.appendNode("name", "Gradle Node plugin")
+                root.appendNode("description", "Gradle plugin for NodeJS")
+                root.appendNode("url", "https://github.com/bmuschko/gradle-node-plugin")
+                root.appendNode("inceptionYear", "2017")
+
+                def scm = root.appendNode("scm")
+                scm.appendNode("url", "https://github.com/bmuschko/gradle-node-plugin")
+                scm.appendNode("connection", "scm:https://bmuschko@github.com/bmuschko/gradle-node-plugin.git")
+                scm.appendNode("developerConnection", "scm:git://github.com/bmuschko/gradle-node-plugin.git")
+
+                // TODO: add license
+                // TODO: add developers
+            }
+        }
+    }
+}
+
+task install(dependsOn: 'publishToMavenLocal', description: 'Installs plugin to local repo')
