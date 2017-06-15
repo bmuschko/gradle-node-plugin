@@ -1,7 +1,10 @@
-package org.gradle.plugins.node
+package org.gradle.plugins.node.base
 
-import static org.gradle.plugins.node.NodeBasePlugin.NODE_GROUP
-import static org.gradle.plugins.node.NodeBasePlugin.NPM_INIT_TASK_NAME
+import org.gradle.plugins.node.AbstractFunctionalTest
+import org.gradle.plugins.node.webpack.WebpackTestFixture
+
+import static org.gradle.plugins.node.base.NodeBasePlugin.NODE_GROUP
+import static org.gradle.plugins.node.base.NodeBasePlugin.NPM_INIT_TASK_NAME
 import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
 import static org.gradle.testkit.runner.TaskOutcome.UP_TO_DATE
 
@@ -90,7 +93,7 @@ $NPM_INIT_TASK_NAME - Creates a package.json file with NPM.""")
         buildFile << WebpackTestFixture.npmInstallLodash()
         buildFile << WebpackTestFixture.npmInstallWebpack()
         buildFile << """
-            import org.gradle.plugins.node.tasks.NodeExec
+            import org.gradle.plugins.node.base.tasks.NodeExec
 
             tasks.withType(NpmInstall) {
                 mustRunAfter npmInit

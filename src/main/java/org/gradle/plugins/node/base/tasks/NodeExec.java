@@ -1,4 +1,4 @@
-package org.gradle.plugins.node.tasks;
+package org.gradle.plugins.node.base.tasks;
 
 import org.gradle.api.Action;
 import org.gradle.api.file.FileTree;

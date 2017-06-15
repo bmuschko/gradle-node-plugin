@@ -1,6 +1,7 @@
-package org.gradle.plugins.node;
+package org.gradle.plugins.node.webpack;
 
-import org.gradle.plugins.node.tasks.WebpackExec;
+import org.gradle.plugins.node.base.NodeBasePlugin;
+import org.gradle.plugins.node.webpack.tasks.WebpackExec;
 import org.gradle.api.Action;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;

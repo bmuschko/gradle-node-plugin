@@ -1,4 +1,4 @@
-package org.gradle.plugins.node.tasks.npm;
+package org.gradle.plugins.node.base.tasks.npm;
 
 import org.gradle.api.Action;
 import org.gradle.api.DefaultTask;

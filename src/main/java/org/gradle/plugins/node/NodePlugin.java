@@ -1,11 +1,13 @@
 package org.gradle.plugins.node;
 
-import org.gradle.plugins.node.tasks.NodeExec;
-import org.gradle.plugins.node.tasks.WebpackExec;
+import org.gradle.plugins.node.base.NodeBasePlugin;
+import org.gradle.plugins.node.base.tasks.NodeExec;
+import org.gradle.plugins.node.webpack.tasks.WebpackExec;
 import org.gradle.api.Action;
 import org.gradle.api.NamedDomainObjectContainer;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
+import org.gradle.plugins.node.webpack.NodeWebpackPlugin;
 
 import java.util.Collections;
 import java.util.HashMap;

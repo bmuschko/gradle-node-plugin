@@ -1,7 +1,7 @@
-package org.gradle.plugins.node;
+package org.gradle.plugins.node.base;
 
-import org.gradle.plugins.node.tasks.npm.NpmCommand;
-import org.gradle.plugins.node.tasks.npm.NpmInit;
+import org.gradle.plugins.node.base.tasks.npm.NpmCommand;
+import org.gradle.plugins.node.base.tasks.npm.NpmInit;
 import org.gradle.api.Action;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;

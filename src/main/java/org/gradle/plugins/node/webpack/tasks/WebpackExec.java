@@ -1,9 +1,10 @@
-package org.gradle.plugins.node.tasks;
+package org.gradle.plugins.node.webpack.tasks;
 
 import org.gradle.api.tasks.InputFile;
 import org.gradle.api.tasks.OutputFile;
 import org.gradle.api.tasks.PathSensitive;
 import org.gradle.api.tasks.PathSensitivity;
+import org.gradle.plugins.node.base.tasks.NodeExec;
 
 import java.io.File;
 

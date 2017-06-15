@@ -1,4 +1,6 @@
-package org.gradle.plugins.node
+package org.gradle.plugins.node.webpack
+
+import org.gradle.plugins.node.AbstractFunctionalTest
 
 import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
 import static org.gradle.testkit.runner.TaskOutcome.UP_TO_DATE
@@ -14,7 +16,7 @@ class NodeWebpackPluginFunctionalTest extends AbstractFunctionalTest {
         buildFile << WebpackTestFixture.npmInstallLodash()
         buildFile << WebpackTestFixture.npmInstallWebpack()
         buildFile << """
-            import org.gradle.plugins.node.tasks.WebpackExec
+            import org.gradle.plugins.node.webpack.tasks.WebpackExec
 
             tasks.withType(NpmInstall) {
                 mustRunAfter npmInit
