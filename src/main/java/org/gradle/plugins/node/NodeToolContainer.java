@@ -1,4 +1,4 @@
-package com.org.gradle.plugins.node;
+package org.gradle.plugins.node;
 
 import java.util.ArrayList;
 import java.util.List;

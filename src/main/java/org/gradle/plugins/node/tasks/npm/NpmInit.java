@@ -1,4 +1,4 @@
-package com.org.gradle.plugins.node.tasks.npm;
+package org.gradle.plugins.node.tasks.npm;
 
 import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.OutputFile;

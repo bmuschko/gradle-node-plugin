@@ -1,7 +1,7 @@
-package com.org.gradle.plugins.node;
+package org.gradle.plugins.node;
 
-import com.org.gradle.plugins.node.tasks.NodeExec;
-import com.org.gradle.plugins.node.tasks.WebpackExec;
+import org.gradle.plugins.node.tasks.NodeExec;
+import org.gradle.plugins.node.tasks.WebpackExec;
 import org.gradle.api.Action;
 import org.gradle.api.NamedDomainObjectContainer;
 import org.gradle.api.Plugin;

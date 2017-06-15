@@ -1,4 +1,4 @@
-package com.org.gradle.plugins.node;
+package org.gradle.plugins.node;
 
 import org.gradle.api.Action;
 import org.gradle.api.NamedDomainObjectContainer;

@@ -1,4 +1,4 @@
-package com.org.gradle.plugins.node
+package org.gradle.plugins.node
 
 import org.gradle.testkit.runner.BuildResult
 import org.gradle.testkit.runner.GradleRunner
