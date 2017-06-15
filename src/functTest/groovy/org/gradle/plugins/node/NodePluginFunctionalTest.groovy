@@ -40,8 +40,8 @@ class NodePluginFunctionalTest extends AbstractFunctionalTest {
                         sources = ['myapp', 'index/index.html']
                         args = ['myapp/index.js', 'build/js/bundle.js']
                     }
-                    
-                     typescript {
+
+                    typescript {
                         sources = ['scripts']
                         args = ['scripts/greeter.ts']
                     }
