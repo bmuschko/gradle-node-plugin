@@ -29,8 +29,8 @@ abstract class AbstractFunctionalTest extends Specification {
         GradleRunner.create().withProjectDir(projectDir).withArguments(arguments).withPluginClasspath()
     }
 
-    File createDir(String path) {
-        temporaryFolder.newFolder(path)
+    File createDir(String... paths) {
+        temporaryFolder.newFolder(paths)
     }
 
     File createFile(String path) {
