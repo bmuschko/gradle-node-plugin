@@ -1,0 +1,3 @@
+### Note
+
+This plugin is only being used for demonstration purpose and is not indented to be used in real-world projects.
