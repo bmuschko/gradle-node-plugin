@@ -15,10 +15,12 @@ import java.io.File;
 @CacheableTask
 public class NodeExec extends SourceTask {
 
+    private PropertyState<File[]> dest;
     private PropertyState<String> executable;
     private PropertyState<String[]> args;
 
     public NodeExec() {
+        dest = getProject().property(File[].class);
         executable = getProject().property(String.class);
         args = getProject().property(String[].class);
     }
@@ -60,6 +62,20 @@ public class NodeExec extends SourceTask {
     @PathSensitive(PathSensitivity.RELATIVE)
     public File getPackageLockFile() {
         return getProject().file("package-lock.json");
+    }
+
+    @OutputFiles
+    @Optional
+    public File[] getDest() {
+        return dest.get();
+    }
+
+    public void setDest(String... dest) {
+        this.dest.set(getProject().files((Object) dest).getFiles().toArray(new File[dest.length]));
+    }
+
+    public void setDest(PropertyState<File[]> dest) {
+        this.dest.set(dest);
     }
 
     @TaskAction
