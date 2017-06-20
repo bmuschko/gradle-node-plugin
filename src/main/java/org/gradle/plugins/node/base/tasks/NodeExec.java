@@ -1,6 +1,8 @@
 package org.gradle.plugins.node.base.tasks;
 
 import org.gradle.api.Action;
+import org.gradle.api.file.ConfigurableFileCollection;
+import org.gradle.api.file.FileCollection;
 import org.gradle.api.file.FileTree;
 import org.gradle.api.provider.PropertyState;
 import org.gradle.api.provider.Provider;
@@ -15,12 +17,12 @@ import java.io.File;
 @CacheableTask
 public class NodeExec extends SourceTask {
 
-    private PropertyState<File[]> dest;
+    private ConfigurableFileCollection dest;
     private PropertyState<String> executable;
     private PropertyState<String[]> args;
 
     public NodeExec() {
-        dest = getProject().property(File[].class);
+        dest = getProject().files();
         executable = getProject().property(String.class);
         args = getProject().property(String[].class);
     }
@@ -66,16 +68,16 @@ public class NodeExec extends SourceTask {
 
     @OutputFiles
     @Optional
-    public File[] getDest() {
-        return dest.get();
+    public FileCollection getDest() {
+        return dest;
     }
 
-    public void setDest(String... dest) {
-        this.dest.set(getProject().files((Object) dest).getFiles().toArray(new File[dest.length]));
+    public void setDest(FileCollection outputFiles) {
+        this.dest.setFrom(outputFiles);
     }
 
-    public void setDest(PropertyState<File[]> dest) {
-        this.dest.set(dest);
+    public void setDest(String... args) {
+        setDest(getProject().files((Object) args));
     }
 
     @TaskAction
