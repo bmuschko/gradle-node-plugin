@@ -26,7 +26,6 @@ import org.gradle.api.tasks.incremental.InputFileDetails;
 import org.gradle.api.tasks.util.PatternSet;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Paths;
 
 public class IncrementalNodeExec extends NodeExec {
@@ -85,12 +84,12 @@ public class IncrementalNodeExec extends NodeExec {
 
             @Override
             public void visitFile(FileVisitDetails visitDetails) {
-                try {
-//                    final File destFile = visitDetails.getRelativePath().getFile(dest);
-                    // TODO: do work
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+//                try {
+////                    final File destFile = visitDetails.getRelativePath().getFile(dest);
+//                    // TODO: do work
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
             }
         });
     }
