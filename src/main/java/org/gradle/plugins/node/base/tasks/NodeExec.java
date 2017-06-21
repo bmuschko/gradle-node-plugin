@@ -15,12 +15,14 @@ import java.io.File;
 @CacheableTask
 public class NodeExec extends SourceTask {
 
-    private PropertyState<File> dest;
+    private PropertyState<File> destFile;
+    private PropertyState<File> destDirectory;
     private PropertyState<String> executable;
     private PropertyState<String[]> args;
 
     public NodeExec() {
-        dest = getProject().property(File.class);
+        destFile = getProject().property(File.class);
+        destDirectory = getProject().property(File.class);
         executable = getProject().property(String.class);
         args = getProject().property(String[].class);
     }
@@ -66,16 +68,30 @@ public class NodeExec extends SourceTask {
 
     @OutputFile
     @Optional
-    public File getDest() {
-        return dest.getOrNull();
+    public File getDestFile() {
+        return destFile.getOrNull();
     }
 
-    public void setDest(File outputFile) {
-        this.dest.set(outputFile);
+    public void setDestFile(File outputFile) {
+        this.destFile.set(outputFile);
     }
 
-    public void setDest(String path) {
-        setDest(getProject().file(path));
+    public void setDestFile(String path) {
+        setDestFile(getProject().file(path));
+    }
+
+    @OutputDirectory
+    @Optional
+    public File getDestDirectory() {
+        return destDirectory.getOrNull();
+    }
+
+    public void setDestDirectory(File outputFile) {
+        this.destDirectory.set(outputFile);
+    }
+
+    public void setDestDirectory(String path) {
+        setDestDirectory(getProject().file(path));
     }
 
     @TaskAction
