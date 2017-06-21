@@ -1,8 +1,6 @@
 package org.gradle.plugins.node.base.tasks;
 
 import org.gradle.api.Action;
-import org.gradle.api.file.ConfigurableFileCollection;
-import org.gradle.api.file.FileCollection;
 import org.gradle.api.file.FileTree;
 import org.gradle.api.provider.PropertyState;
 import org.gradle.api.provider.Provider;
@@ -17,12 +15,12 @@ import java.io.File;
 @CacheableTask
 public class NodeExec extends SourceTask {
 
-    private ConfigurableFileCollection dest;
+    private PropertyState<File> dest;
     private PropertyState<String> executable;
     private PropertyState<String[]> args;
 
     public NodeExec() {
-        dest = getProject().files();
+        dest = getProject().property(File.class);
         executable = getProject().property(String.class);
         args = getProject().property(String[].class);
     }
@@ -60,24 +58,24 @@ public class NodeExec extends SourceTask {
         return super.getSource();
     }
 
-    @InputFile
-    @PathSensitive(PathSensitivity.RELATIVE)
-    public File getPackageLockFile() {
-        return getProject().file("package-lock.json");
-    }
+//    @InputFile
+//    @PathSensitive(PathSensitivity.RELATIVE)
+//    public File getPackageLockFile() {
+//        return getProject().file("package-lock.json");
+//    }
 
-    @OutputFiles
+    @OutputFile
     @Optional
-    public FileCollection getDest() {
-        return dest;
+    public File getDest() {
+        return dest.getOrNull();
     }
 
-    public void setDest(FileCollection outputFiles) {
-        this.dest.setFrom(outputFiles);
+    public void setDest(File outputFile) {
+        this.dest.set(outputFile);
     }
 
-    public void setDest(String... args) {
-        setDest(getProject().files((Object) args));
+    public void setDest(String path) {
+        setDest(getProject().file(path));
     }
 
     @TaskAction
